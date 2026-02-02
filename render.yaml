@@ -1,0 +1,19 @@
+# Render Blueprint: optional one-click deploy
+# Or set these in Dashboard: New > Web Service > connect repo
+
+services:
+  - type: web
+    name: polytechedge
+    runtime: python
+    region: oregon
+
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: SECRET_KEY
+        generateValue: true
+      # Add in Render Dashboard: OPENAI_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
+      # APPLE_* if needed. For Postgres: add Postgres instance and DATABASE_URL is set automatically.

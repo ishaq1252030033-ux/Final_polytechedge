@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Error - Polytechnic College Predictor{% endblock %}
+
+{% block content %}
+<div class="container my-5 py-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+      <div class="card border-0 shadow">
+        <div class="card-body p-5">
+          <div class="mb-4 text-danger">
+            <i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem;"></i>
+          </div>
+          <h2 class="mb-4">Oops! Something went wrong</h2>
+          <p class="lead mb-4">{{ message }}</p>
+          <a href="/" class="btn btn-primary btn-lg px-4">Return to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

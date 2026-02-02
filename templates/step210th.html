@@ -1,0 +1,135 @@
+{% extends "base10th.html" %}
+{% block title %}Step 2: Set Your Preferences - Polytechnic College Predictor{% endblock %}
+
+{% block content %}
+<!-- Progress Bar -->
+<div class="progress-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="progress" style="height: 10px;">
+          <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="d-flex justify-content-between mt-2">
+          <span class="text-muted">Step 1: Enter Percentage</span>
+          <span class="text-primary fw-bold">Step 2: Set Preferences</span>
+          <span class="text-muted">Step 3: View Results</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Step 2 Form -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card border-0 shadow">
+        <div class="card-header bg-primary text-white py-3">
+          <h4 class="mb-0"><i class="bi bi-sliders me-2"></i>Set Your College Preferences</h4>
+        </div>
+        <div class="card-body p-5">
+          <form action="/step2" method="post">
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <label for="college_type" class="form-label">College Type</label>
+                <select class="form-select form-select-lg" id="college_type" name="college_type" required>
+                  <option value="All">All Types</option>
+                  <option value="Government">Government</option>
+                  <option value="Aided">Aided</option>
+                  <option value="Private">Private</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="category" class="form-label">Reservation Category</label>
+                <select class="form-select form-select-lg" id="category" name="category" required>
+                  <option value="GENERAL">General</option>
+                  <option value="OBC">OBC</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
+                  <option value="SEBC">SEBC</option>
+                  <option value="EWS">EWS</option>
+                  <option value="TFWS">TFWS</option>
+                  <option value="PH">Physically Handicapped</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <label for="branch" class="form-label">Preferred Branch</label>
+                <select class="form-select form-select-lg" id="branch" name="branch" required>
+                  <option value="All">All Branches</option>
+                  <option value="Computer Engineering">Computer Engineering</option>
+                  <option value="Civil Engineering">Civil Engineering</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  <option value="Electrical Engineering">Electrical Engineering</option>
+                  <option value="Electronics Engineering">Electronics Engineering</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Automobile Engineering">Automobile Engineering</option>
+                  <option value="Chemical Engineering">Chemical Engineering</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="city" class="form-label">Preferred City/Region</label>
+                <select class="form-select form-select-lg" id="city" name="city" required>
+                  <option value="All">All Regions</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Nashik">Nashik</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Aurangabad">Aurangabad</option>
+                  <option value="Kolhapur">Kolhapur</option>
+                  <option value="Navi Mumbai">Navi Mumbai</option>
+                  <option value="Panvel">Panvel</option>
+                  <option value="Solapur">Solapur</option>
+                  <option value="Amravati">Amravati</option>
+                  <option value="Akola">Akola</option>
+                  <option value="Yavatmal">Yavatmal</option>
+                  <option value="Wardha">Wardha</option>
+                  <option value="Chandrapur">Chandrapur</option>
+                  <option value="Gadchiroli">Gadchiroli</option>
+                  <option value="Bhandara">Bhandara</option>
+                  <option value="Gondia">Gondia</option>
+                  <option value="Washim">Washim</option>
+                  <option value="Buldhana">Buldhana</option>
+                  <option value="Jalgaon">Jalgaon</option>
+                  <option value="Dhule">Dhule</option>
+                  <option value="Nandurbar">Nandurbar</option>
+                  <option value="Ahmednagar">Ahmednagar</option>
+                  <option value="Beed">Beed</option>
+                  <option value="Jalna">Jalna</option>
+                  <option value="Parbhani">Parbhani</option>
+                  <option value="Hingoli">Hingoli</option>
+                  <option value="Latur">Latur</option>
+                  <option value="Osmanabad">Osmanabad</option>
+                  <option value="Nanded">Nanded</option>
+                  <option value="Sangli">Sangli</option>
+                  <option value="Satara">Satara</option>
+                  <option value="Ratnagiri">Ratnagiri</option>
+                  <option value="Sindhudurg">Sindhudurg</option>
+                  <option value="Thane">Thane</option>
+                  <option value="Raigad">Raigad</option>
+                  <option value="Mumbai Suburban">Mumbai Suburban</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">Show My College Predictions <i class="bi bi-arrow-right"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="card mt-4 border-0 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-info-circle-fill text-primary me-2"></i>About Your Preferences</h5>
+          <p class="card-text">Your preferences help us filter and rank polytechnic colleges based on your requirements. Setting specific preferences will give you more targeted results. You can select "All" in any field to see a wider range of options.</p>
+          <p class="card-text"><strong>Note:</strong> Category-based relaxation in cutoffs will be automatically applied based on your selected reservation category.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

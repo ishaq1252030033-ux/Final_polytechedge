@@ -1095,38 +1095,50 @@ def load_model_and_data():
         print("Data file not found. Please run the data processing pipeline first.")
         return None, None, None
 
-    # Load the model, encoder, and cutoff data
-    with open(model_path, 'rb') as f:
-        model = pickle.load(f)
+    # Load the model, encoder, and cutoff data (catch pickle errors e.g. Git LFS pointer files)
+    try:
+        with open(model_path, 'rb') as f:
+            model = pickle.load(f)
 
-    with open(encoder_path, 'rb') as f:
-        encoder = pickle.load(f)
+        with open(encoder_path, 'rb') as f:
+            encoder = pickle.load(f)
 
-    cutoff_data = pd.read_csv(data_path)
+        cutoff_data = pd.read_csv(data_path)
 
-    # Ensure required columns exist when using cleaned data
-    if 'city' not in cutoff_data.columns:
-        # Derive city from 'location' if present
-        if 'location' in cutoff_data.columns:
-            cutoff_data['city'] = cutoff_data['location'].apply(
-                lambda x: x.split(',')[-1].strip() if isinstance(x, str) and ',' in x else x
-            )
-        else:
-            cutoff_data['city'] = 'Unknown'
+        # Ensure required columns exist when using cleaned data
+        if 'city' not in cutoff_data.columns:
+            # Derive city from 'location' if present
+            if 'location' in cutoff_data.columns:
+                cutoff_data['city'] = cutoff_data['location'].apply(
+                    lambda x: x.split(',')[-1].strip() if isinstance(x, str) and ',' in x else x
+                )
+            else:
+                cutoff_data['city'] = 'Unknown'
 
-    if 'round' not in cutoff_data.columns:
-        cutoff_data['round'] = '3'
+        if 'round' not in cutoff_data.columns:
+            cutoff_data['round'] = '3'
 
-    if 'college_type' not in cutoff_data.columns:
-        cutoff_data['college_type'] = 'Private'
+        if 'college_type' not in cutoff_data.columns:
+            cutoff_data['college_type'] = 'Private'
 
-    # Normalize some fields for consistency
-    if 'category' in cutoff_data.columns:
-        cutoff_data['category'] = cutoff_data['category'].astype(str).str.upper()
+        # Normalize some fields for consistency
+        if 'category' in cutoff_data.columns:
+            cutoff_data['category'] = cutoff_data['category'].astype(str).str.upper()
 
-    return model, encoder, cutoff_data
+        return model, encoder, cutoff_data
+    except Exception as e:
+        print("Could not load predictor model/data (e.g. missing or Git LFS pointer):", e)
+        return None, None, None
 
-model, encoder, cutoff_data = load_model_and_data()
+# Lazy-load model so app starts even when .pkl are missing or LFS pointers (e.g. on Railway)
+_model_cache = None
+
+def get_model_and_data():
+    global _model_cache
+    if _model_cache is not None:
+        return _model_cache
+    _model_cache = load_model_and_data()
+    return _model_cache
 
 @app.route('/predictor')
 def predictor():
@@ -1145,10 +1157,11 @@ def step1():
 @app.route('/step2', methods=['GET', 'POST'])
 def step2():
     if request.method == 'POST':
+        model, encoder, cutoff_data = get_model_and_data()
         # Check if model is loaded
         if model is None or encoder is None or cutoff_data is None:
             return render_template('error.html',
-                                  message="Model or data files not found. Please process your PDF files first.")
+                                  message="College predictor model or data is not available on this deployment. Use the predictor on a deployment with model files, or run train_model.py and add the .pkl files.")
 
         # Get user preferences
         college_type = request.form.get('college_type')

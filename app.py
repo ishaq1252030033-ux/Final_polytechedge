@@ -1850,16 +1850,10 @@ def contact():
 
 
 # === run guard for local development ONLY ===
-if __name__ == '__main__':
+if __name__ == "__main__":
     import os
-    host = os.environ.get('FLASK_RUN_HOST', '127.0.0.1')
-    try:
-        port = int(os.environ.get('FLASK_RUN_PORT', 5000))
-    except Exception:
-        port = 5000
-    debug = os.environ.get('FLASK_DEBUG', '0') in ('1', 'true', 'True')
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
 
-    # Only runs when executing `python app.py` (or `python -m edge`), not when imported by WSGI
-    app.run(host=host, port=port, debug=debug)
 
 

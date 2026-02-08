@@ -24,7 +24,9 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "your_super_secret_key")
 
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# OpenAI client only when API key is set (app must start on Railway/Render without it)
+_openai_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=_openai_key) if _openai_key else None
 
 
 # Database: use DATABASE_URL on Render (Postgres) or sqlite locally
@@ -835,9 +837,9 @@ def recommend():
         if not skills and not branches and not interests:
             return jsonify({"success": False, "error": "No input provided"}), 400
 
-        # Ensure OpenAI API Key is set
-        if not os.getenv("OPENAI_API_KEY"):
-            raise ValueError("OpenAI API key is missing!")
+        # Ensure OpenAI API Key is set and client is available
+        if not client or not os.getenv("OPENAI_API_KEY"):
+            return jsonify({"success": False, "error": "OpenAI API key is not configured. Please set OPENAI_API_KEY."}), 503
 
         # Generate AI prompt
         if education_type == "Courses":
@@ -1006,9 +1008,9 @@ Please provide a structured roadmap with the following sections:
 
 Format the response in a clear, structured manner with bullet points and sections."""
 
-        # Ensure OpenAI API Key is set
-        if not os.getenv("OPENAI_API_KEY"):
-            raise ValueError("OpenAI API key is missing!")
+        # Ensure OpenAI API Key is set and client is available
+        if not client or not os.getenv("OPENAI_API_KEY"):
+            return jsonify({"success": False, "error": "OpenAI API key is not configured. Please set OPENAI_API_KEY."}), 503
 
         response = client.chat.completions.create(
             model="gpt-3.5-turbo-0125",

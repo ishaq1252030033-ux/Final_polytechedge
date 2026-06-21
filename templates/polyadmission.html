@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diploma Polytechnic Admission 2025 Guide – by PolytechEDGE</title>
+
+
+    <!-- CSS libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/polytechEdge.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+
+</head>
+
+
+
+<body>
+   <!-- Reusable Header/Navbar Component -->
+<!-- Include the reusable header/navbar component -->
+    {% include 'components/header.html' %}
+
+
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-content">
+            <a href="#home" class="nav-item" data-tooltip="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#introduction" class="nav-item" data-tooltip="Introduction">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <a href="#video-tutorials" class="nav-item" data-tooltip="Video Tutorials">
+                <i class="fas fa-video"></i>
+            </a>
+            <a href="#registration" class="nav-item" data-tooltip="Registration">
+                <i class="fas fa-user-plus"></i>
+            </a>
+            <a href="#documents" class="nav-item" data-tooltip="Documents">
+                <i class="fas fa-file-alt"></i>
+            </a>
+            <a href="#process" class="nav-item" data-tooltip="Process">
+                <i class="fas fa-tasks"></i>
+            </a>
+            <a href="#features" class="nav-item" data-tooltip="Features">
+                <i class="fas fa-star"></i>
+            </a>
+            <a href="#cutoffs" class="nav-item" data-tooltip="Cutoffs">
+                <i class="fas fa-chart-line"></i>
+            </a>
+            <a href="#dates" class="nav-item" data-tooltip="Dates">
+                <i class="fas fa-calendar-alt"></i>
+            </a>
+            <a href="#community" class="nav-item" data-tooltip="Community">
+                <i class="fas fa-users"></i>
+            </a>
+            <a href="#other-services" class="nav-item" data-tooltip="Services">
+                <i class="fas fa-cogs"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="#home" class="mobile-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#introduction" class="mobile-nav-item">
+                <i class="fas fa-info-circle"></i>
+                <span>Intro</span>
+            </a>
+            <a href="#video-tutorials" class="mobile-nav-item">
+                <i class="fas fa-video"></i>
+                <span>Videos</span>
+            </a>
+            <a href="#registration" class="mobile-nav-item">
+                <i class="fas fa-user-plus"></i>
+                <span>Register</span>
+            </a>
+            <a href="#documents" class="mobile-nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Docs</span>
+            </a>
+            <button class="mobile-nav-more">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>More</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-menu">
+        <div class="mobile-nav-menu-content">
+            <button class="mobile-nav-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#process" class="mobile-nav-menu-item">
+                <i class="fas fa-tasks"></i>
+                <span>Process</span>
+            </a>
+            <a href="#features" class="mobile-nav-menu-item">
+                <i class="fas fa-star"></i>
+                <span>Features</span>
+            </a>
+            <a href="#cutoffs" class="mobile-nav-menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Cutoffs</span>
+            </a>
+            <a href="#dates" class="mobile-nav-menu-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Dates</span>
+            </a>
+            <a href="#community" class="mobile-nav-menu-item">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+            <a href="#other-services" class="mobile-nav-menu-item">
+                <i class="fas fa-cogs"></i>
+                <span>Services</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-4">Diploma Polytechnic Admission 2025 </h1>
+                        <p class="hero-subtitle mb-4">Hands-On Technical Education That Puts You Ahead – Right From
+                            Class 10</p>
+                        <div class="hero-buttons">
+                            <a href="#introduction" class="btn btn-get-started">
+                                <i class="fas fa-rocket"></i>
+                                Get Started
+                            </a>
+                            <a href="#predictor" class="btn btn-predictor">
+                                <i class="fas fa-calculator"></i>
+                                Try College Predictor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="quote-container">
+                        <div class="quote-carousel">
+                            <div class="quote-slide active">
+                                <div class="hero-quote">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="quote-text">"Engineering is not just about building things, it's about
+                                        building dreams into reality."</p>
+                                    <div class="quote-author">- Dr. APJ Abdul Kalam</div>
+                                    <div class="quote-icons">
+                                        <i class="fas fa-microchip"></i>
+                                        <i class="fas fa-cogs"></i>
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quote-slide">
+                                <div class="hero-quote">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="quote-text">"The best way to predict the future is to create it."</p>
+                                    <div class="quote-author">- Peter Drucker</div>
+                                    <div class="quote-icons">
+                                        <i class="fas fa-rocket"></i>
+                                        <i class="fas fa-lightbulb"></i>
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quote-slide">
+                                <div class="hero-quote">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="quote-text">"Innovation distinguishes between a leader and a follower."
+                                    </p>
+                                    <div class="quote-author">- Steve Jobs</div>
+                                    <div class="quote-icons">
+                                        <i class="fas fa-brain"></i>
+                                        <i class="fas fa-puzzle-piece"></i>
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quote-slide">
+                                <div class="hero-quote">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="quote-text">"The only way to do great work is to love what you do."</p>
+                                    <div class="quote-author">- Steve Jobs</div>
+                                    <div class="quote-icons">
+                                        <i class="fas fa-heart"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quote-slide">
+                                <div class="hero-quote">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="quote-text">"Success is not final, failure is not fatal: it is the courage
+                                        to continue that counts."</p>
+                                    <div class="quote-author">- Winston Churchill</div>
+                                    <div class="quote-icons">
+                                        <i class="fas fa-flag"></i>
+                                        <i class="fas fa-medal"></i>
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quote-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="introduction-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="intro-content">
+                        <h2 class="section-title">Diploma Polytechnic</h2>
+                        <p class="intro-text">Polytechnic is a diploma-level technical education program designed for
+                            students who have completed their 10th grade. It offers practical and job-oriented training
+                            in various fields such as Information Technology, Computer Engineering,
+                            Electronics Engineering, Mechanical Engineering, and more. The duration of the course is
+                            typically 3 years, and it
+                            equips students with the skills and knowledge needed to start a professional career or
+                            pursue higher education like B.E./B.Tech.</p>
+
+                        <div class="intro-features">
+                            <div class="feature-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="feature-text">
+                                    <h4>Eligibility</h4>
+                                    <p>Students who have passed 10th standard (SSC) from a recognized board with
+                                        required marks are eligible for admission.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-clock"></i>
+                                <div class="feature-text">
+                                    <h4>Duration</h4>
+                                    <p>Polytechnic diploma courses typically span 3 years, offering focused technical
+                                        training after Class 10.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-book"></i>
+                                <div class="feature-text">
+                                    <h4>Programs</h4>
+                                    <p>Offered in streams like Computer Engineering, Information Technology, Mechanical,
+                                        Civil, Electronics, and more.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tutorial Section -->
+    <section id="video-tutorials" class="video-tutorial-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Video Tutorials</h2>
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-card">
+                        <a href="https://youtu.be/AtdT2swyIx4?si=7QesI1hIQ8hltmhR">
+                        <div class="video-thumbnail">
+                            <img src="static/images/thumbnail first year.png" alt="Admission Process">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>  </a>
+                        <div class="video-content">
+                            <h3 class="video-title">Complete Admission Process Guide</h3>
+                            <p class="video-description">POLYTECHNIC FIRST YEAR REGISTRATION FULL INFORMATION</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 11:44</span>
+                                <span><i class="fas fa-eye"></i> 9.5K views</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="static/images/thumbnail admission process.jpg" alt="Documentation">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Admission Process</h3>
+                            <p class="video-description"> POLYTECHNIC FIRST YEAR ADMISSION PROCESS EXPLAINED</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 12:45</span>
+                                <span><i class="fas fa-eye"></i> 1.8K views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="static/images/thumbnail polytechnic college predictor.jpg" alt="College Selection">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">College Selection Guide for Polytechnic</h3>
+                            <p class="video-description">COLLEGE PREDICTOR (PREDICT YOUR COLLEGE FOR POLYTECHNIC) </p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 18:20</span>
+                                <span><i class="fas fa-eye"></i> 3.2K views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Link Section -->
+    <section id="registration" class="registration-link-section">
+        <div class="container">
+            <div class="registration-content" data-aos="fade-up">
+                <div class="registration-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h2>🎓 Official Polytechnic Registration</h2>
+                <p>Click the button below to access the official MSBTE registration portal for first-year and DSE admission.</p>
+                <a href="https://poly25.dtemaharashtra.gov.in/diploma25/" class="btn btn-register" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    Register Now
+                </a>
+                <div class="registration-note">
+                    <i class="fas fa-info-circle"></i>
+                    Registration period: May 20 - June 16, 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents" class="documents-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Required Documents</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="document-card">
+                        <div class="card-header">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Common Documents</h3>
+                        </div>
+                        <ul class="document-list">
+                            <li><i class="fas fa-check-circle"></i> SSC Mark Sheet </li>
+                            <li><i class="fas fa-check-circle"></i> Personal Email and Mobile Number </li>
+                            <li><i class="fas fa-check-circle"></i> Password Photo + Sign </li>
+                            <li><i class="fas fa-check-circle"></i> Technical / Intermediate Drawing Certificate (if
+                                have) </li>
+                            <li><i class="fas fa-check-circle"></i> Aadhar Card </li>
+                            <li><i class="fas fa-check-circle"></i> Nationality and Domicile Certificate </li>
+                            <li><i class="fas fa-check-circle"></i> HSC Mark Sheet (Direct Second Year Polytechnic DSD)
+                            </li>
+                            <li><i class="fas fa-check-circle"></i> Leaving / Transfer Certificate (TC) / Proforma N
+                            </li>
+                            <li><i class="fas fa-check-circle"></i> Income Certificate </li>
+                            <li><i class="fas fa-check-circle"></i> Gap Certificate (if required) </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="document-card">
+                        <div class="card-header">
+                            <i class="fas fa-file-signature"></i>
+                            <h3>Category-Specific Documents</h3>
+                        </div>
+                        <div class="category-tabs">
+                            <button class="tab-btn active" data-category="reserved">All Reserved Category</button>
+                            <button class="tab-btn" data-category="ews">EWS</button>
+                            <button class="tab-btn" data-category="TFWS">TFWS</button>
+                            <button class="tab-btn" data-category="Minority">Minority</button>
+                        </div>
+                        <div class="category-documents">
+                            <!-- SC/ST Documents -->
+                            <ul class="document-list active" id="reserved-docs">
+                                <li><i class="fas fa-check-circle"></i> Caste Certificate (All Caste) (SC, ST, VJ, OBC,
+                                    SBC, SEBC) </li>
+                                <li><i class="fas fa-check-circle"></i> Non-Creamy Layer Certificate</li>
+
+
+                            </ul>
+                            <!-- EWS Documents -->
+                            <ul class="document-list" id="ews-docs">
+                                <li><i class="fas fa-check-circle"></i> EWS Certificate Issued By Govt Of Maharashtra
+                                </li>
+                            </ul>
+
+                            <!-- TFWS Documents -->
+                            <ul class="document-list" id="TFWS-docs">
+                                <li><i class="fas fa-check-circle"></i> Income Certificate </li>
+
+
+                            </ul>
+                            <!-- MINORITY Documents -->
+                            <ul class="document-list" id="Minority-docs">
+                                <li><i class="fas fa-check-circle"></i> Declaration Of Minority or Certificate
+                                    Mentioning Minority Religious or Lingustic</li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline Section -->
+    <section id="process" class="process-timeline">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Admission Process</h2>
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-right">
+                    <div class="process-content">
+                        <h4>Online Registration</h4>
+                        <p>Complete your registration on the official portal</p>
+                        <a href="#" class="btn btn-custom">Watch Tutorial</a>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-left">
+                    <div class="process-content">
+                        <h4>Document Verification</h4>
+                        <p>Submit and verify all required documents</p>
+                        <a href="#" class="btn btn-custom">Watch Tutorial</a>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-right">
+                    <div class="process-content">
+                        <h4>College Selection</h4>
+                        <p>Choose your preferred colleges and branches</p>
+                        <a href="#" class="btn btn-custom">Watch Tutorial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section id="features" class="feature-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Why Choose Polytechnic ?</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Early Career Start</h3>
+                        <p>Begin your technical education right after 10th and get job-ready by the age of 18-19.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Better Opportunities</h3>
+                        <p>Gain industry-relevant technical skills and open doors to advanced studies like B.E./B.Tech
+                            and top job roles.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Career Growth</h3>
+                        <p>Fast-track your professional journey with early qualifications and hands-on experience in
+                            your chosen field.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cutoffs Section with Interactive Chart -->
+    <section id="cutoffs" class="cutoffs-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">College Cutoffs</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="cutoff-filters mb-4">
+                        <button class="filter-btn active" data-year="2024-1"
+                            data-pdf="https://drive.google.com/file/d/12U7bRPIz3tMakvNjzye3Wagw1PFhevej/preview">2024-25
+                            CAP Round 1 </button>
+                        <button class="filter-btn" data-year="2024-2"
+                            data-pdf="https://drive.google.com/file/d/12SMDZ8P5i2lx_Wj6c6k1S3mxp8qa02Hv/preview">2024-25
+                            CAP Round 2</button>
+                        <button class="filter-btn" data-year="2024-3"
+                            data-pdf="https://drive.google.com/file/d/12Q5vfpaZ4SdMDceYXsurMf1DzCL4-De4/preview">2024-25
+                            CAP Round 3</button>
+                    </div>
+                    <div class="pdf-viewer-container" data-aos="fade-up">
+                        <div class="pdf-wrapper">
+                            <div class="pdf-loading">
+                                <div class="spinner"></div>
+                                <p>Loading PDF...</p>
+                            </div>
+                            <iframe id="pdfViewer"
+                                src="https://drive.google.com/file/d/12U7bRPIz3tMakvNjzye3Wagw1PFhevej/preview"
+                                width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+                            <div class="pdf-overlay">
+                                <button class="expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Modal -->
+    <div class="pdf-modal">
+        <div class="pdf-modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="pdf-loading">
+                <div class="spinner"></div>
+                <p>Loading PDF...</p>
+            </div>
+            <iframe id="modalPdfViewer" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Important Dates with Timeline -->
+    <section id="dates" class="dates-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Important Dates</h2>
+            <div class="timeline-container" data-aos="fade-up">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Online Registration</h4>
+                            <p>May 20 - June 16, 2025</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Provisition Merit List</h4>
+                            <p> June 18, 2025</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4> Provisition Merit List Correction</h4>
+                            <p> From June 19 to June 21, 2025</p>
+                        </div>
+                    </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4> Final Merit List </h4>
+                        <p> June 23, 2025</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4> First Cap Round </h4>
+                        <p> June 20, 2025</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community-section">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Join Our Community</h2>
+            <p class="text-center mb-5" data-aos="fade-up">Connect with fellow aspirants and stay updated</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="community-links" data-aos="fade-up">
+                        <a href="https://chat.whatsapp.com/EAiMKEkj70529ZVycmAj1V" class="community-link whatsapp"
+                            target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp Group</span>
+                        </a>
+                        <a href="http://t.me/+XRZxevl5nXliMGI1" class="community-link telegram" target="_blank">
+                            <i class="fab fa-telegram"></i>
+                            <span>Telegram Channel</span>
+                        </a>
+                        <a href="https://youtube.com/@polytechedge?si=gDB_ISriH9YNd1Gv" class="community-link youtube"
+                            target="_blank">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube Channel</span>
+                        </a>
+                        <a href="https://www.instagram.com/polytechedge?igsh=MWhlenNzNGhwd2R5Mg=="
+                            class="community-link instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Other Services Section -->
+    <section id="other-services" class="services-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Other Services</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Career Guidance</h3>
+                        <p class="service-description">Get expert guidance for your engineering career path</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Career Counseling Sessions</li>
+                            <li><i class="fas fa-check-circle"></i> Industry Expert Consultations</li>
+                            <li><i class="fas fa-check-circle"></i> Resume Building Workshops</li>
+                            <li><i class="fas fa-check-circle"></i> Interview Preparation</li>
+                        </ul>
+                        <a href="" class="btn btn-custom">Available Soon</a>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Polytech Portal</h3>
+                        <p class="service-description">Access our comprehensive learning platform</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Online Study Materials</li>
+                            <li><i class="fas fa-check-circle"></i> Practice Tests & Quizzes</li>
+                            <li><i class="fas fa-check-circle"></i> Live Doubt Solving</li>
+                            <li><i class="fas fa-check-circle"></i> Progress Tracking</li>
+                        </ul>
+                        <a href="{{ url_for('portal') }}" class="btn btn-custom">Access Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Include the reusable header/navbar component -->
+    {% include 'components/footer.html' %}
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out',
+            mirror: false
+        });
+
+        // Quote Carousel
+        let currentQuote = 0;
+        const quotes = document.querySelectorAll('.quote-slide');
+        const totalQuotes = quotes.length;
+
+        function rotateQuotes() {
+            quotes[currentQuote].classList.remove('active');
+            currentQuote = (currentQuote + 1) % totalQuotes;
+            quotes[currentQuote].classList.add('active');
+        }
+
+        // Rotate quotes every 5 seconds
+        setInterval(rotateQuotes, 5000);
+
+        // Form validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        // Video play functionality
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const videoCard = this.closest('.video-card');
+                const videoId = videoCard.dataset.videoId;
+                // Add your video player logic here
+            });
+        });
+
+        // Category Documents Switching
+        document.querySelectorAll('.category-tabs .tab-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons and document lists
+                document.querySelectorAll('.category-tabs .tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.category-documents .document-list').forEach(list => {
+                    list.classList.remove('active');
+                });
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Show corresponding document list
+                const category = this.getAttribute('data-category');
+                document.getElementById(`${category}-docs`).classList.add('active');
+            });
+        });
+
+        // Enhanced PDF Viewer functionality
+        const pdfModal = document.querySelector('.pdf-modal');
+        const modalPdfViewer = document.getElementById('modalPdfViewer');
+        const expandBtn = document.querySelector('.expand-btn');
+        const closeModal = document.querySelector('.close-modal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfLoading = document.querySelectorAll('.pdf-loading');
+
+        // Show loading state
+        function showLoading(container) {
+            container.querySelector('.pdf-loading').style.display = 'flex';
+        }
+
+        // Hide loading state
+        function hideLoading(container) {
+            container.querySelector('.pdf-loading').style.display = 'none';
+        }
+
+        // Handle year button clicks with loading state
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Show loading state
+                showLoading(document.querySelector('.pdf-viewer-container'));
+
+                // Update PDF viewer source
+                const pdfUrl = this.getAttribute('data-pdf');
+                pdfViewer.src = pdfUrl;
+            });
+        });
+
+        // Handle expand button click with loading state
+        expandBtn.addEventListener('click', () => {
+            // Get the current PDF URL from the main viewer
+            const currentPdfUrl = pdfViewer.src;
+            modalPdfViewer.src = currentPdfUrl;
+            pdfModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            showLoading(pdfModal);
+        });
+
+        // Handle close button click
+        closeModal.addEventListener('click', () => {
+            pdfModal.classList.remove('active');
+            document.body.style.overflow = '';
+            // Clear the modal iframe source when closing
+            modalPdfViewer.src = '';
+        });
+
+        // Close modal when clicking outside
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) {
+                pdfModal.classList.remove('active');
+                document.body.style.overflow = '';
+                // Clear the modal iframe source when closing
+                modalPdfViewer.src = '';
+            }
+        });
+
+        // Handle PDF loading events
+        pdfViewer.addEventListener('load', () => {
+            hideLoading(document.querySelector('.pdf-viewer-container'));
+        });
+
+        modalPdfViewer.addEventListener('load', () => {
+            hideLoading(pdfModal);
+        });
+
+        // Floating Navigation Active State
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            function setActiveNavItem() {
+                const scrollPosition = window.scrollY;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                            if (item.getAttribute('href') === `#${sectionId}`) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Add smooth scrolling to navigation links
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Update active state on scroll
+            window.addEventListener('scroll', setActiveNavItem);
+            // Initial check for active state
+            setActiveNavItem();
+        });
+
+        // Mobile Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavMore = document.querySelector('.mobile-nav-more');
+            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item, .mobile-nav-menu-item');
+
+            // Toggle mobile menu
+            mobileNavMore.addEventListener('click', () => {
+                mobileNavMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            mobileNavClose.addEventListener('click', () => {
+                mobileNavMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Close menu when clicking outside
+            mobileNavMenu.addEventListener('click', (e) => {
+                if (e.target === mobileNavMenu) {
+                    mobileNavMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Handle mobile navigation clicks
+            mobileNavItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        // Close mobile menu if open
+                        mobileNavMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+
+                        // Scroll to section
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
+                        // Update active state
+                        mobileNavItems.forEach(navItem => {
+                            navItem.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Update active state on scroll for mobile
+            function setActiveMobileNavItem() {
+                const scrollPosition = window.scrollY;
+                const sections = document.querySelectorAll('section[id]');
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        mobileNavItems.forEach(item => {
+                            item.classList.remove('active');
+                            if (item.getAttribute('href') === `#${sectionId}`) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveMobileNavItem);
+            setActiveMobileNavItem();
+        });
+    </script>
+
+</body>
+
+</html>

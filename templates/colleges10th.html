@@ -1,0 +1,407 @@
+{% extends "base10th.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College List - Polytech Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .colleges-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stats-box {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stats-box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .stat-item {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .colleges-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+        }
+        .college-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .college-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .college-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .college-info {
+            color: #666;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            font-weight: 500;
+        }
+        .badge-government {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+        .badge-aided {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .badge-private {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        .city-tag {
+            background-color: #f0f0f0;
+            color: #555;
+            padding: 2px 7px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .filter-select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 150px;
+        }
+        .college-count {
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+        }
+        .branches-list, .cities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .branch-tag, .city-tag {
+            background-color: #f0f0f0;
+            color: #555;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            grid-column: 1 / -1;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            border-color: #ddd;
+            background-color: white;
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Polytech Predictor</h1>
+            <p>All Available Colleges</p>
+        </header>
+        
+        <div class="colleges-container">
+            <div class="stats-box">
+                <h2>College Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">{{ stats.total_colleges }}</div>
+                        <div class="stat-label">Total Colleges</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">{{ stats.total_branches }}</div>
+                        <div class="stat-label">Engineering Branches</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">{{ stats.total_cities }}</div>
+                        <div class="stat-label">Cities</div>
+                    </div>
+                </div>
+                
+                <!-- Admin Actions Section -->
+                <div class="admin-actions my-4">
+                    <h3>Data Management</h3>
+                    <div class="btn-group">
+                        <button id="extract-all-colleges" class="btn btn-primary">
+                            <i class="bi bi-cloud-download"></i> Extract All Colleges from PDFs
+                        </button>
+                        <div id="extraction-status" class="alert mt-3" style="display:none;"></div>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="colleges">Colleges</div>
+                    <div class="tab" data-tab="branches">Branches</div>
+                    <div class="tab" data-tab="cities">Cities</div>
+                </div>
+                
+                <div class="tab-content" id="colleges-tab">
+                    <h3>College Types</h3>
+                    <ul>
+                        {% for type, count in stats.college_types.items() %}
+                        <li><strong>{{ type }}</strong>: {{ count }} colleges</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="branches-tab" style="display:none;">
+                    <h3>Available Branches</h3>
+                    <div class="branches-list">
+                        {% for branch in stats.branches %}
+                        <span class="branch-tag">{{ branch }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="cities-tab" style="display:none;">
+                    <h3>Available Cities</h3>
+                    <div class="cities-list">
+                        {% for city in stats.cities %}
+                        <span class="city-tag">{{ city }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="college-search" class="search-input" placeholder="Search colleges by name, type, or city...">
+                <div class="filter-controls">
+                    <select id="type-filter" class="filter-select">
+                        <option value="all">All Types</option>
+                        {% for type in stats.college_types %}
+                        <option value="{{ type }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="city-filter" class="filter-select">
+                        <option value="all">All Cities</option>
+                        {% for city in stats.cities %}
+                        <option value="{{ city }}">{{ city }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="college-count">Showing <span id="shown-count">{{ stats.total_colleges }}</span> of {{ stats.total_colleges }} colleges</div>
+            
+            <div class="colleges-list">
+                {% for college in colleges %}
+                <div class="college-card" data-type="{{ college.college_type }}" data-city="{{ college.city }}">
+                    <div class="college-name">{{ college.college_name }}</div>
+                    <div class="college-info">
+                        <span class="badge badge-{{ college.college_type|lower }}">{{ college.college_type }}</span>
+                        <span class="city-tag">{{ college.city }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="no-results" style="display:none;">No colleges match your search criteria. Try adjusting your filters.</div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <a href="{{ url_for('index') }}" class="back-link">Back to Home</a>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Show selected tab content and mark tab as active
+                const tabName = this.getAttribute('data-tab');
+                document.getElementById(`${tabName}-tab`).style.display = 'block';
+                this.classList.add('active');
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('college-search');
+        const typeFilter = document.getElementById('type-filter');
+        const cityFilter = document.getElementById('city-filter');
+        const collegeCards = document.querySelectorAll('.college-card');
+        
+        function filterColleges() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedType = typeFilter.value.toLowerCase();
+            const selectedCity = cityFilter ? cityFilter.value.toLowerCase() : 'all';
+            let visibleCount = 0;
+            
+            collegeCards.forEach(card => {
+                const collegeName = card.querySelector('.college-name').textContent.toLowerCase();
+                const collegeType = card.getAttribute('data-type').toLowerCase();
+                const collegeCity = card.getAttribute('data-city').toLowerCase();
+                
+                const matchesSearch = collegeName.includes(searchTerm);
+                const matchesType = selectedType === 'all' || collegeType === selectedType;
+                const matchesCity = selectedCity === 'all' || collegeCity === selectedCity;
+                
+                if (matchesSearch && matchesType && matchesCity) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('shown-count').textContent = visibleCount;
+            
+            if (visibleCount === 0) {
+                const noResults = document.querySelector('.no-results');
+                if (!noResults) {
+                    const noResultsElement = document.createElement('div');
+                    noResultsElement.className = 'no-results';
+                    noResultsElement.textContent = 'No colleges match your search criteria.';
+                    document.querySelector('.colleges-list').appendChild(noResultsElement);
+                }
+            } else {
+                const noResults = document.querySelector('.no-results');
+                if (noResults) {
+                    noResults.remove();
+                }
+            }
+        }
+        
+        searchInput.addEventListener('input', filterColleges);
+        if (typeFilter) typeFilter.addEventListener('change', filterColleges);
+        if (cityFilter) cityFilter.addEventListener('change', filterColleges);
+        
+        // Extract All Colleges Button
+        const extractButton = document.getElementById('extract-all-colleges');
+        const statusDiv = document.getElementById('extraction-status');
+        
+        extractButton.addEventListener('click', function() {
+            // Change button state
+            extractButton.disabled = true;
+            extractButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Extracting... (This may take a few minutes)';
+            
+            // Show status
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'alert alert-info mt-3';
+            statusDiv.innerHTML = '<i class="bi bi-info-circle"></i> Extracting all colleges from PDFs. This process may take several minutes. Please wait...';
+            
+            // Make AJAX request
+            fetch('/extract_all_colleges')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        statusDiv.className = 'alert alert-success mt-3';
+                        statusDiv.innerHTML = `<i class="bi bi-check-circle"></i> ${data.message}`;
+                        
+                        // Refresh the page after 3 seconds
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 3000);
+                    } else {
+                        statusDiv.className = 'alert alert-danger mt-3';
+                        statusDiv.innerHTML = `<i class="bi bi-exclamation-triangle"></i> Error: ${data.message}`;
+                        extractButton.disabled = false;
+                        extractButton.innerHTML = '<i class="bi bi-cloud-download"></i> Extract All Colleges from PDFs';
+                    }
+                })
+                .catch(error => {
+                    statusDiv.className = 'alert alert-danger mt-3';
+                    statusDiv.innerHTML = `<i class="bi bi-exclamation-triangle"></i> Network error: ${error.message}`;
+                    extractButton.disabled = false;
+                    extractButton.innerHTML = '<i class="bi bi-cloud-download"></i> Extract All Colleges from PDFs';
+                });
+        });
+    </script>
+</body>
+</html> 

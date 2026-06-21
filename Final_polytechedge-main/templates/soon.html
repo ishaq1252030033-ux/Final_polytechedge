@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!-- Coming Soon page - use url_for('coming_soon') for links so it works locally and on any host -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PolytechEDGE - New Career Guidance Features Coming Soon">
+  <title>Coming Soon - PolytechEDGE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/polytechEdge.css') }}">
+
+  <style>
+    /* Custom styles for the Coming Soon page */
+    .coming-soon-hero {
+      min-height: 80vh;
+      padding-top: 100px;
+      padding-bottom: 50px;
+      background: linear-gradient(135deg, #121212, #2a2a5a);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .coming-soon-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .coming-soon-title {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #3a86ff, #ff006e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary-color);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(255, 0, 110, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .animated-text span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.3s forwards;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      min-width: 120px;
+    }
+
+    .countdown-item .number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #3a86ff, #ff006e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .countdown-item .text {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3a86ff, #ff006e);
+      width: 75%;
+      border-radius: 4px;
+      position: relative;
+      animation: progressAnimation 2s ease-out;
+    }
+
+    .progress-bar-fill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg,
+                                 transparent,
+                                 rgba(255, 255, 255, 0.3),
+                                 transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes progressAnimation {
+      0% { width: 0; }
+      100% { width: 75%; }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .notification-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .floating-shapes div {
+      position: absolute;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      opacity: 0.2;
+      filter: blur(50px);
+      z-index: 0;
+      animation: float 15s infinite;
+    }
+
+    .shape1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      left: -150px;
+      animation-delay: 0s !important;
+    }
+
+    .shape2 {
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      right: -200px;
+      animation-delay: -5s !important;
+    }
+
+    .shape3 {
+      width: 200px;
+      height: 200px;
+      top: 40%;
+      right: 10%;
+      animation-delay: -10s !important;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(50px, 50px) rotate(5deg); }
+      50% { transform: translate(0, 100px) rotate(10deg); }
+      75% { transform: translate(-50px, 50px) rotate(5deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .coming-soon-heading {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      .coming-soon-title {
+        font-size: 3rem;
+      }
+
+      .countdown {
+        gap: 1rem;
+      }
+
+      .countdown-item {
+        padding: 1rem;
+        min-width: 80px;
+      }
+
+      .countdown-item .number {
+        font-size: 2rem;
+      }
+
+      .countdown-item .text {
+        font-size: 0.8rem;
+      }
+
+      .coming-soon-hero {
+        padding-top: 120px;
+      }
+
+      .lead.text-white {
+        width: 100% !important;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .coming-soon-title {
+        font-size: 2.2rem;
+      }
+
+      .countdown-item {
+        min-width: 60px;
+      }
+
+      .display-1 {
+        font-size: 3rem !important;
+      }
+
+      .coming-soon-hero {
+        padding-top: 130px;
+      }
+    }
+  </style>
+</head>
+
+<body data-bs-theme="dark">
+  <!-- Include the reusable header/navbar component -->
+  {% include 'components/header.html' %}
+
+  <!-- Hero Section -->
+  <div class="coming-soon-hero d-flex justify-content-center align-items-center">
+    <div class="particles" id="particles"></div>
+
+    <div class="floating-shapes">
+      <div class="shape1"></div>
+      <div class="shape2"></div>
+      <div class="shape3"></div>
+    </div>
+
+    <div class="container text-center coming-soon-content">
+      <div class="mb-4" data-aos="fade-down" data-aos-delay="100">
+        <span class="badge bg-primary px-3 py-2 rounded-pill fs-6">New Feature</span>
+      </div>
+
+      <h1 class="display-1 fw-bolder text-uppercase mb-3 coming-soon-heading" data-aos="zoom-in" data-aos-delay="150" style="text-shadow: 0 5px 15px rgba(0,0,0,0.3); letter-spacing: 5px; line-height: 1.2;">
+        <span style="color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.3);">COMING</span>
+        <span style="color: var(--primary-color); text-shadow: 0 0 10px rgba(58,134,255,0.5), 0 0 20px rgba(58,134,255,0.3);">SOON</span>
+      </h1>
+
+      <h2 class="coming-soon-title px-2" id="animated-title" data-aos="fade-up" data-aos-delay="200">
+        Advanced Career Guidance
+      </h2>
+
+      <p class="lead text-white mb-4 mx-auto px-2" style="max-width: 800px;" data-aos="fade-up" data-aos-delay="300">
+        We're working on something amazing! Our team is building an enhanced career guidance platform with personalized recommendations, industry insights, and interactive pathways.
+      </p>
+
+      <div class="countdown" data-aos="fade-up" data-aos-delay="400">
+        <div class="countdown-item">
+          <div class="number" id="days">30</div>
+          <div class="text">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="hours">24</div>
+          <div class="text">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="minutes">00</div>
+          <div class="text">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="seconds">00</div>
+          <div class="text">Seconds</div>
+        </div>
+      </div>
+
+      <div class="mx-auto" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="500">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <span>Development Progress</span>
+          <span>75%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="notification-form mt-5" data-aos="fade-up" data-aos-delay="600">
+        <h4 class="mb-4">Get Notified When We Launch</h4>
+        <form class="row g-3">
+          <div class="col-md-8">
+            <input type="email" class="form-control form-control-lg" placeholder="Your email address" aria-label="Email address">
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-lg w-100">Notify Me</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="container my-5 py-5">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="fw-bold mb-4">Upcoming Features</h2>
+      <p class="lead w-75 mx-auto">Discover the exciting new tools and resources we're building to enhance your career journey.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-card">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-brain" aria-hidden="true"></i>
+          </div>
+          <h4>AI-Powered Assessments</h4>
+          <p>Take advanced skill assessments powered by artificial intelligence to get accurate insights about your strengths and areas for growth.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-route" aria-hidden="true"></i>
+          </div>
+          <h4>Personalized Pathways</h4>
+          <p>Discover customized career pathways based on your skills, interests, and educational background with step-by-step guidance.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-users" aria-hidden="true"></i>
+          </div>
+          <h4>Industry Mentor Connect</h4>
+          <p>Connect with industry professionals who can provide valuable insights, advice, and networking opportunities in your field of interest.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-card">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+          </div>
+          <h4>Skill Development Hub</h4>
+          <p>Access curated learning resources and tutorials to build the specific skills needed for your chosen career path.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="feature-card">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
+          </div>
+          <h4>Career Analytics</h4>
+          <p>Track your progress with detailed analytics that show your skill development, application status, and career growth over time.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="feature-card">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-bullseye" aria-hidden="true"></i>
+          </div>
+          <h4>Goal Setting Framework</h4>
+          <p>Set SMART career goals with our interactive framework that helps you break down big ambitions into achievable steps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Wait Section -->
+  <div class="container-fluid py-5 my-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+    <div class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h2 class="text-white fw-bold mb-4">Why Wait? Start Your Journey Today!</h2>
+          <p class="text-white mb-4">While our advanced features are in development, you can still access our existing career guidance tools. Start exploring and preparing for your future now!</p>
+          <a href="{{ url_for('home_page') }}" class="btn btn-light btn-lg">
+            <i class="fas fa-rocket me-2" aria-hidden="true"></i> Explore Current Features
+          </a>
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left">
+          <img src="{{ url_for('static', filename='images/career.jpg') }}" alt="Career Guidance" class="img-fluid rounded-4 shadow-lg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  {% include 'components/footer.html' %}
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: true
+    });
+
+    // Animated title
+    document.addEventListener('DOMContentLoaded', function() {
+      const title = document.getElementById('animated-title');
+      const text = title.textContent.trim();
+
+      title.innerHTML = '';
+
+      for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = text[i] === ' ' ? ' ' : text[i];
+        span.style.animationDelay = `${i * 0.05}s`;
+        title.appendChild(span);
+      }
+
+      // Initialize countdown
+      const countdownDate = new Date();
+      countdownDate.setDate(countdownDate.getDate() + 30); // 30 days from now
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Create particles
+      const particlesContainer = document.getElementById('particles');
+      const particlesCount = 100;
+
+      for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Random size between 2px and 6px
+        const size = Math.random() * 4 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random position
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+
+        // Random opacity between 0.1 and 0.7
+        particle.style.opacity = Math.random() * 0.6 + 0.1;
+
+        // Animation
+        const duration = Math.random() * 20 + 10; // 10-30s
+        const delay = Math.random() * 5; // 0-5s delay
+
+        particle.style.animation = `float ${duration}s infinite ease-in-out ${delay}s`;
+
+        particlesContainer.appendChild(particle);
+      }
+    });
+
+    // Theme toggle function
+    function toggleTheme() {
+      const body = document.body;
+      if (body.getAttribute('data-bs-theme') === 'dark') {
+        body.setAttribute('data-bs-theme', 'light');
+      } else {
+        body.setAttribute('data-bs-theme', 'dark');
+      }
+    }
+  </script>
+</body>
+</html>

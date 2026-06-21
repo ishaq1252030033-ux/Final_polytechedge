@@ -1,0 +1,49 @@
+{% extends "base10th.html" %}
+{% block title %}About - Polytechnic College Predictor{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card border-0 shadow">
+        <div class="card-header bg-primary text-white py-3">
+          <h4 class="mb-0"><i class="bi bi-info-circle me-2"></i>About Polytechnic College Predictor</h4>
+        </div>
+        <div class="card-body p-5">
+          <h5 class="mb-4">What is the Polytechnic College Predictor?</h5>
+          <p>The Polytechnic College Predictor is a tool designed to help students who have completed their 10th standard (SSC) education in Maharashtra to find suitable polytechnic colleges based on their marks, preferences, and reservation category.</p>
+          
+          <p>Our predictor uses historical cutoff data from DTE Maharashtra's Centralized Admission Process (CAP) to predict your chances of admission to various polytechnic colleges across the state.</p>
+          
+          <hr class="my-4">
+          
+          <h5 class="mb-4">How does it work?</h5>
+          <p>The predictor works in three simple steps:</p>
+          <ol>
+            <li class="mb-3"><strong>Enter your 10th percentage:</strong> We collect your SSC examination percentage to compare with historical cutoff data.</li>
+            <li class="mb-3"><strong>Set your preferences:</strong> You choose your preferred college type (Government, Aided, Private), branch, city, and your reservation category.</li>
+            <li class="mb-3"><strong>View predictions:</strong> Our AI model analyzes your inputs and historical data to predict which colleges you're likely to get admission to based on previous years' cutoffs.</li>
+          </ol>
+          
+          <hr class="my-4">
+          
+          <h5 class="mb-4">Data Sources</h5>
+          <p>Our predictions are based on historical cutoff data from DTE Maharashtra's CAP rounds for polytechnic admissions. The data includes:</p>
+          <ul>
+            <li>College cutoffs for different branches</li>
+            <li>Reservation category-specific cutoffs</li>
+            <li>Regional and college-type specific trends</li>
+          </ul>
+          
+          <hr class="my-4">
+          
+          <h5 class="mb-4">Disclaimer</h5>
+          <p>The predictions provided by this tool are based on historical data and should be used for guidance only. Actual cutoffs may vary during the current admission cycle. We recommend that you also check the official DTE Maharashtra website for the most up-to-date information.</p>
+          
+          <p>This tool is not affiliated with DTE Maharashtra or any official government body. It is an independent effort to help students make informed decisions about their polytechnic education in Maharashtra.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

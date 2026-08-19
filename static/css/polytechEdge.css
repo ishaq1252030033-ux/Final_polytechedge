@@ -233,6 +233,14 @@ body[data-bs-theme="dark"] .card-header {
     width: 100%;
 }
 
+.navbar-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
 /* Feature Icon */
 .feature-icon {
     width: 80px;

@@ -128,6 +128,14 @@ body {
     }
 }
 
+.navbar-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;

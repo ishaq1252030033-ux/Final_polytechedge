@@ -128,12 +128,23 @@ body {
     }
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 56px;
+}
+
 .navbar-logo {
-    width: 55px;
-    height: 55px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     display: block;
     flex-shrink: 0;
+}
+
+.navbar-brand span {
+    line-height: 1;
 }
 
 /* Hero Section */
